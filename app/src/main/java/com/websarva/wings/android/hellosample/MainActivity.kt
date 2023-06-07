@@ -42,6 +42,12 @@ class MainActivity : AppCompatActivity() {
             // メッセージ表示
             output.text = inputStr + "さん、こんにちは"
         }
+
+        // Buttonオブジェクトを取得
+        val btClear = findViewById<Button>(R.id.btClear)
+        // クリアボタンにリスナを設定
+        btClear.setOnClickListener(listener)
+
     }
 
     // ボタンをクリックしたときのリスナクラス
@@ -53,10 +59,21 @@ class MainActivity : AppCompatActivity() {
             val input = findViewById<EditText>(R.id.etName)
             // メッセージを表示するTextViewオブジェクトを取得
             val output = findViewById<TextView>(R.id.tvOutput)
-            // 入力された文字列を取得
-            val inputStr = input.text.toString()
-            // メッセージ表示
-            output.text = inputStr + "さん、こんにちは"
+            // R値に応じて処理分岐
+            when (view.id) {
+                // 表示ボタンの場合
+                R.id.btClick -> {
+                    // 入力された文字列を取得
+                    val inputStr = input.text.toString()
+                    // メッセージ表示
+                    output.text = inputStr + "さん、こんにちは"
+                }
+                //クリアボタンの場合
+                R.id.btClear -> {
+                    input.setText("")
+                    output.text = ""
+                }
+            }
         }
     }
 }
