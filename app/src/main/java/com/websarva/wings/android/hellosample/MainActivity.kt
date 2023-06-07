@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             val input = findViewById<EditText>(R.id.etName)
             // メッセージを表示するTextViewオブジェクトを取得
             val output = findViewById<TextView>(R.id.tvOutput)
-            // 入力された文字列を取得
+            // 入力された文字列を取得 Editable型なのでStringに変換する必要がある
             val inputStr = input.text.toString()
             // メッセージ表示
             output.text = inputStr + "さん、こんにちは"
@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 //クリアボタンの場合
                 R.id.btClear -> {
+                    // Editable型なのでそのまま空文字を代入できないのでsetText()を利用
                     input.setText("")
                     output.text = ""
                 }
